@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Credit from './Credit'
-import { Link } from 'react-router-dom'
+import Credit from './Credit';
+import { Link } from 'react-router-dom';
+import AccountBalance from './AccountBalance';
 
 class Credits extends Component {
    render() {
@@ -19,6 +20,7 @@ class Credits extends Component {
             <Link to="/">Home</Link>
             <h1>Credits</h1>
             {CreditComponents}
+            <AccountBalance accountBalance={this.props.accountBalance}/>
          </div>
       );
    }

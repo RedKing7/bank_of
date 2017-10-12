@@ -67,11 +67,11 @@ class App extends Component {
     }
 
     const DebitsWrapper = () =>{
-      return <Debits debits={this.state.debits}/>
+      return <Debits debits={this.state.debits} accountBalance={accountBalance}/>
     }
 
     const CreditsWrapper = () =>{
-      return <Credits credits={this.state.credits}/>
+      return <Credits credits={this.state.credits} accountBalance={accountBalance}/>
     }
 
     return (
