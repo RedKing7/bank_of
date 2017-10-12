@@ -35,6 +35,19 @@ class App extends Component {
     })
   }
 
+  addCredit = (newCredit) =>{
+    let credits = [...this.state.credits]
+    credits.push(newCredit);
+    this.setState({credits});
+  }
+
+  addDebit = (newDebit) =>{
+    let debits = [...this.state.debits]
+    console.log(debits);
+    debits.push(newDebit);
+    this.setState({debits});
+  }
+
   getBalance = () =>{
     let debitTotal = this.state.debits.reduce((total, debit)=>{
       return total+debit.amount;
@@ -48,11 +61,9 @@ class App extends Component {
   componentWillMount(){
     this.getDebits();
     this.getCredits();
-    console.log('third')
   }
   
   render () {
-    console.log('last')
     const accountBalance = this.getBalance();
 
     const HomeComponent = () =>{
@@ -67,11 +78,19 @@ class App extends Component {
     }
 
     const DebitsWrapper = () =>{
-      return <Debits debits={this.state.debits} accountBalance={accountBalance}/>
+      return <Debits
+        debits={this.state.debits}
+        accountBalance={accountBalance}
+        addDebit={this.addDebit}
+      />
     }
 
     const CreditsWrapper = () =>{
-      return <Credits credits={this.state.credits} accountBalance={accountBalance}/>
+      return <Credits
+        credits={this.state.credits}
+        accountBalance={accountBalance}
+        addCredit={this.addCredit}
+      />
     }
 
     return (
